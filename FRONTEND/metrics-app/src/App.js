@@ -2,7 +2,8 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-let url='http://localhost:8000/metrics'
+let url='http://localhost:8001/time'
+
 function App() {
   
   useEffect(() => {

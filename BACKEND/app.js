@@ -2,13 +2,14 @@ const express = require('express')
 const app = express()
 const cors= require('cors')
 
+const makeEpochTimeObject = require('./functions/makeEpochTimeObject')
 app.use(cors())
-const port = 8000
+const port = 8001
 
 
 app.get('/time', (req, res) => {
 
-  res.send('time')
+  res.send(makeEpochTimeObject())
 
 })
 
