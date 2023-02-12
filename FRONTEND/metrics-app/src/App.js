@@ -2,12 +2,19 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
-let url='http://localhost:8001/time'
+
+
+let url = process.env.REACT_APP_URL;
+let authorizationHeader = process.env.REACT_APP_AUTHORIZATION;
 
 function App() {
   
   useEffect(() => {
-    fetch(url)
+    fetch(url + '/time', {
+      headers: {
+        'Authorization' : authorizationHeader
+      }}
+      )
     .then((response) => response.text())
     .then(data => { console.log(data)
     }).catch((error) => {

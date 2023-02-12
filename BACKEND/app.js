@@ -4,10 +4,37 @@ const app = express();
 const promMid = require('express-prometheus-middleware');
 const cors = require('cors');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
+
 const makeEpochTimeObject = require('./functions/makeEpochTimeObject');
 
 app.use(cors());
-const port = 8001;
+
+let port = process.env.PORT;
+let authorizationHeader = process.env.AUTHORIZATION;
+
+app.use(function(req, res, next) {
+  console.log(req)
+  if ( !req.get('Authorization') ) {
+        return res.status(403).json({
+          error: 'No authorization header'
+        })
+      }
+  next()
+})
+
+app.use(function(req, res, next) {
+  console.log(req)
+  if ( req.get('Authorization') !=authorizationHeader) {
+        return res.status(403).json({
+          error: 'Wrong authorization header'
+        })
+      }
+  next()
+})
+
 
 app.get('/time', (req, res) => {
   res.send(makeEpochTimeObject());
