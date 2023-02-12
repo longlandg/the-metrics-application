@@ -6,9 +6,15 @@ const cors= require('cors')
 const port = 8000
 
 
-app.get('/', (req, res) => {
+app.get('/time', (req, res) => {
 
-  res.send('Hello World!')
+  res.send('time')
+
+})
+
+app.get('/metrics', (req, res) => {
+
+  res.send('metrics')
 
 })
 
