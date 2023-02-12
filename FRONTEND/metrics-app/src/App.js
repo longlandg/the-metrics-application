@@ -1,6 +1,7 @@
 
 import './App.css';
 import { useState, useEffect } from 'react';
+import Home from './views/Home';
 
 
 
@@ -26,7 +27,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-       <p>hello</p>
+        <Home />
       </header>
     </div>
   );

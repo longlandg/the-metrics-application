@@ -15,8 +15,8 @@ app.use(cors());
 let port = process.env.PORT;
 let authorizationHeader = process.env.AUTHORIZATION;
 
+// check to see if there is a header with the key of Authorization if not return a 403
 app.use(function(req, res, next) {
-  console.log(req)
   if ( !req.get('Authorization') ) {
         return res.status(403).json({
           error: 'No authorization header'
@@ -25,8 +25,8 @@ app.use(function(req, res, next) {
   next()
 })
 
+// check to see if the header with the key of Authorization has the value assoicated with it in the .env file if not return a 403
 app.use(function(req, res, next) {
-  console.log(req)
   if ( req.get('Authorization') !=authorizationHeader) {
         return res.status(403).json({
           error: 'Wrong authorization header'
@@ -35,11 +35,11 @@ app.use(function(req, res, next) {
   next()
 })
 
-
+// on the end /point time return an epoch object eg { 'epoch' : 234533 }
 app.get('/time', (req, res) => {
   res.send(makeEpochTimeObject());
 });
-
+// on the end point /metrics return the metrics from promethius
 app.use(promMid({
   metricsPath: '/metrics',
   collectDefaultMetrics: true,
