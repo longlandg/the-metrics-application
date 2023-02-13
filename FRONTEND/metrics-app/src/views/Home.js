@@ -4,9 +4,10 @@ import MetricsSection from "../components/MetricsSection";
 
 const  Home = () => {
   return (
- <div>
-  <TimerSection />
-  <MetricsSection />
+ <div className="Home">
+
+ <section className="timer-s"><TimerSection /></section>
+ <section className="metric-s"><MetricsSection /> </section>
   </div>
   );
 }

@@ -16,6 +16,7 @@ useEffect(() => {
   })
   .then((response) => response.text())
   .then(data => {
+
     setData(data)
     setIsLoading(false)
     setError(null)

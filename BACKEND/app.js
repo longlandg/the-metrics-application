@@ -37,6 +37,7 @@ app.use(function(req, res, next) {
 
 // on the end /point time return an epoch object eg { 'epoch' : 234533 }
 app.get('/time', (req, res) => {
+  console.log(typeof makeEpochTimeObject())
   res.send(makeEpochTimeObject());
 });
 // on the end point /metrics return the metrics from promethius
