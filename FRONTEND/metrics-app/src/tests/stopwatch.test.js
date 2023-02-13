@@ -40,3 +40,7 @@ test('When given 39600 seconds returns 11:00:00', () => {
   expect(stopwatch(39600)).toBe('11:00:00')
 })
 
+test('When given 1.1 seconds returns 00:00:01', () => {
+  expect(stopwatch(1.1)).toBe('00:00:01')
+})
+

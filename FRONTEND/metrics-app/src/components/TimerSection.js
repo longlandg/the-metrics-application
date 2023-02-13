@@ -1,21 +1,24 @@
 import { useState, useEffect } from 'react';
 import useFetch from '../functions/useFetch';
+import stopwatch from '../functions/stopwatch';
 let url = process.env.REACT_APP_URL;
 
 const  TimerSection = () => {
   const [timeDiff, setTimeDiff] = useState('00:00:00');
 
   const { data, error, isLoading } = useFetch(url + '/time')
-console.log(data)
+
+  let serverTime = Date.now()
+
   useEffect(() => {
     const interval = setInterval(() => {
-      // console.log(  JSON.parse(data).epoch)
-      // console.log(Date.now())
-      if("epoch" in (JSON.parse(data).epoch)){
-      console.log(Date.now() - JSON.parse(data).epoch)
-      }
      
-    }, 5000);
+      let differenceInTime =  (Date.now() - serverTime)/1000
+      console.log(differenceInTime)
+     
+      setTimeDiff(stopwatch(differenceInTime))
+
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
