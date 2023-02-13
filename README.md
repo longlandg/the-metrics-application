@@ -26,7 +26,7 @@ create a .env file in the FRONTEND/metrics-app directory and add the following:
 REACT_APP_URL="http://localhost:3001"
 REACT_APP_AUTHORIZATION="mysecrettoken"
 
-then run npm
+then run npm run start
 
 Tests:
 
