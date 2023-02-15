@@ -3,7 +3,8 @@
 A simple API and frontend application for displaying the DATA returned by the API
 
 Instructions:
-(please note: the work carried out in the 4 hrs time limit is in the 'main' branch I have since contiuned with elements that i didnt finish in 'additional_work' branch) 
+(please note: the work carried out in the 4 hrs time limit is in the 'main' branch I have since contiuned fixing elements that i didnt finish in 'additional_work' branch) 
+
 Clone the repository
 
 Open 2 terminals:
