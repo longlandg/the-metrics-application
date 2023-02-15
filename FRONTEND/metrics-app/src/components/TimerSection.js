@@ -7,22 +7,26 @@ const  TimerSection = () => {
   const { data , loading } = useFetchTime()
   const [time, setTimer] = useState(555);
   const [timeDiff, setTimeDiff] = useState('00:00:00');
+  const [serverTime, setServerTime] = useState(Date.now());
   
-// todo get server time rather than just Date.now()
-let serverTime = Date.now()
-
-useEffect(() => {
-  setTimer(data)
-}, [data])
-
-useEffect(() => {
-  const interval = setInterval(() => {
-
-    let differenceInTime =  (Date.now() - serverTime)/1000
-    setTimeDiff(stopwatch(differenceInTime))
-  }, 1000);
-  return () => clearInterval(interval);
-}, []);
+  useEffect(() => {
+    setTimer(data)
+  }, [data])
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      let differenceInTime =  (Date.now() - serverTime)/1000
+      setTimeDiff(stopwatch(differenceInTime))
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [serverTime]);
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setServerTime(Date.now())
+    }, 30000);
+    return () => clearInterval(interval);
+  }, []);
 
  
  return (
